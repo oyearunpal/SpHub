@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SpHub'</title>
+<link rel="shortcut icon" href="img/award.png" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<style>
+header {
+    text-align: center;
+    color: #fff;
+    background-attachment: scroll;
+    background-image: url(../img/header-bg.jpg);
+    background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header .intro-text {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+header .intro-text .intro-lead-in {
+    margin-bottom: 25px;
+    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 22px;
+}
+
+header .intro-text .intro-heading {
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 50px;
+}
+</style>
+<body style="background-image:url(../grass.jpg)">
+
+<header class=" navbar navbar-default " style="margin-bottom:1px;">
+<div class="container">
+<!--
+<button class="btn btn-default pull-right navbar-btn  " data-toggle="modal" data-target="#loginModal">Login</button>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+-->
+            <div class="modal-body">
+                <!-- The form is placed inside the body of modal -->
+                <form id="loginForm" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Username</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="username" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Password</label>
+                        <div class="col-md-5">
+                            <input type="password" class="form-control" name="password" />
+                        </div>
+                    </div>
+                    <div class=" modal-footer">
+                        <div class="col-md-5 col-md-offset-3">
+                            <button type="submit" class="btn btn-default">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--test1-->
+<button class="btn btn-default pull-right navbar-btn  " data-toggle="modal" data-target="#signUpModal">SignUp!   </button>
+ <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-header">
+                   <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                    <h4 class="modal-title">SignUp!</h4>
+                </div>
+
+            <div class="modal-body">
+             <form role="form" action="signUp.php" id="loginForm" method="post" >
+             <div class="row">
+              <div class="col-md-6">
+        
+              <div class="form-group">
+                <label for="name" class=" control-label">Your Name</label>
+                <div class="input-group">
+                       <span class="input-group-addon"><span class="glyphicon glyphicon-user" data-toggle="tooltip" data-placement="top" title="Password must be of six characters"></span></span>
+                <input type="email" class="form-control" id="name" placeholder="Your Full Name">
+                </div>
+               </div>
+              
+              <div class="form-group">
+                <label for="Email1" class=" control-label">Email address</label>
+                <input type="email" class="form-control" id="Email1" placeholder="Enter email">
+              </div>
+              
+              <div class="form-group">
+               <label for="Password1" class="control-label">Password</label>
+                  <div class="input-group">
+                       <span class="input-group-addon"><span class="glyphicon glyphicon-lock" data-toggle="tooltip" data-placement="top" title="Password must be of six characters"></span></span>
+                     
+                      <input type="password" class="form-control" id="Password1" placeholder="Password">
+                  </div>
+               </div>
+                
+          </div><!--close of col-md-6 -->
+        <div class="col-md-6">
+                  
+             <div class="form-group">
+                      <label for="year" class=" control-label">Year</label>
+                      <select class="form-control " name="branch"  id="branch">
+                      <option>FE</option>
+                      <option>SE</option>
+                      <option>TE</option>
+                      <option>BE</option>
+                      </select>
+                   </div>
+            
+                
+                  <div class="form-group">
+                      <label for="branch" class=" control-label">Branch</label>
+                      <select class="form-control " name="branch"  id="branch">
+                      <option>IT</option>
+                      <option>COMPS</option>
+                      <option>EXTC</option>
+                      <option>ETRX</option>
+                      </select>
+                   </div>
+            
+                 <div class="form-group">
+                   <label for="sex" class="control-label">Sex</label>
+                      <select class="form-control" name="sex"  id="sex">
+                      <option>Male</option>
+                      <option>FEMALE</option>
+                      </select>
+            
+                 </div>
+        </div>
+     </div>
+     <div class="modal-footer">
+      <button type="submit" class="btn btn-info ">Submit  </button>
+      <button  type="reset" class="btn btn-default ">reset</button>
+      </div>
+    </form><!--End of test-->
+  </div></div></div></div>
+</div>
+
+</header>
+ <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Welcome To SP's Official Sport Website</div>
+                <div class="intro-heading">It's Nice To Meet You</div>
+                <a href="#services" class="page-scroll btn btn-xl">Join Us</a>
+            </div>
+        </div>
+    </header>
+
+
+<div class="navbar navbar-inverse navbar-static-top navbar-collapse">
+ <div  class="container">
+   <a href="#" class="navbar-brand">SPHub!</a>
+   <form class="navbar-form navbar-left" role="search">
+     <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+ <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+ <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+ </button>
+ <div class=" collapse navbar-collapse navHeaderCollapse">
+ <ul class="nav navbar-nav navbar-right">
+ <li class="active"> <a href="#">Home <span class="badge "><span class="glyphicon glyphicon-home"></span></span></a></li></li>
+ 
+ <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sport<b class="caret"></b></a>
+   <ul class="dropdown-menu">
+       <li><a href="cricket_home.htm">Cricket<span class="badge pull-right">4</span></a></li>
+        <li><a href="#">Chess</a></li>
+         <li><a href="#">Football</a></li>
+         </ul></li>
+ <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">social Media<b class="caret"></b></a>
+   <ul class="dropdown-menu">
+       <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+         <li><a href="#">Google+</a></li>
+         </ul></li>
+ <!--<li><a href="#">Social Media</a></li>  -->
+ <li><a href="#contact" data-toggle="modal" >Feedback</a></li>
+  <li><a href="#">About</a></li>
+ </ul>
+ </div>
+ </div>
+ 
+
+</div><!-- navigation bar close -->
+ 
+<!--Feedback form -->
+<div class="modal fade" id="contact">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     <form action="php/feedback.php" method="post" >
+      <div class="modal-header">
+      
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    
+        <h4 class="modal-title">Help Us to improve</h4>
+      </div>
+     
+      <div class="modal-body">
+        
+        <p>Write here&hellip;</p>
+        <textarea rows="8" class="form-control" name="feedback"></textarea>
+      </div>
+      
+         
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary"  >Send</button>
+        
+      </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal --> 
+  
+
+
+
+ <footer class="navbar navbar-default navbar-fixed-bottom " >
+  <div class="container">
+   <p class="navbar-text pull-left" style="height:inherit">ADBMS Project</p>
+   <div class="navbar-text pull-right">
+   <a href="#"><i class="fa fa-twitter fa-2x" style="color: #4099FF"></i></a>
+   <a href="#" ><i class="fa fa-google-plus fa-2x "></i></a>
+   <a href="#"><i class="fa fa-facebook fa-2x" style="color:#3b5998"></i></a>
+    <a href="#"><i class="icon-thumbs-up icon-3x main-color"></i></a>
+   </div>
+   
+  
+   </div>
+  </footer>
+  
+  
+<script  src="js/jquery-1.11.1.min.js""></script>
+<script src="js/bootstrap.js" ></script>
+
+</body>
+</html>
