@@ -1,7 +1,7 @@
 
  <footer class="navbar navbar-default navbar-fixed-bottom " >
   <div class="container">
-   <p class="navbar-text pull-left" style="height:inherit">ADBMS Project</p>
+   <p class="navbar-text pull-left" style="height:inherit">ADBMS Project,Copyright <?php echo date("Y"); ?></p>
    <div class="navbar-text pull-right">
    <a href="#"><i class="fa fa-twitter fa-2x" style="color: #4099FF"></i></a>
    <a href="#" ><i class="fa fa-google-plus fa-2x "></i></a>
@@ -19,3 +19,12 @@
 
 </body>
 </html>
+
+<?php
+  // 5. Close database connection
+	if (isset($connection)) {
+	  mysqli_close($connection);
+	}
+?>
+
+

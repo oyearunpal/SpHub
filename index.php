@@ -1,5 +1,11 @@
 
-<?php include 'header.php' ?>
+//<?php require_once("includes/session.php"); ?>
+<?php require_once("includes/functions.php"); ?>
+//<?php confirm_logged_in(); ?>
+
+//<?php $layout_context = "admin"; ?>
+<?php include("includes/layouts/header.php"); ?>
+
  <div class="container">
   <div class="jumbotron text-center">
    <h1> Home</h1>
@@ -77,4 +83,4 @@
   
    </div>
   </div> 
-<?php include 'footer.php' ?>
+<?php include("includes/layouts/footer.php"); ?>
