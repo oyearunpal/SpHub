@@ -1,6 +1,7 @@
 <?php require_once("includes/session.php"); ?>
 <?php require_once("includes/functions.php"); ?>
-//<?php confirm_logged_in(); ?>
+<?php require_once("includes/db_connection.php"); ?>
+<?php //confirm_logged_in(); ?>
 
 //<?php $layout_context = "admin"; ?>
 <?php include("includes/layouts/header.php"); ?>
@@ -8,8 +9,8 @@
  <div class="container">
   <div class="row">
         <div class="col-lg-9">
-         <div class="tab-content">
-                   <div class="tab-pane fade active in" id="10">
+          <?php /* <div class="tab-content">
+                 <div class="tab-pane fade active in" id="10">
              <div class="panel "  >
                   <div class="panel-heading">
                  
@@ -58,13 +59,13 @@
                       </div><!--close of panel-body-->
                     
         </div><!--close of panel-->
-          </div>
-           <div class="tab-pane fade" id="11">
+          </div>  
+           <div class="tab-pane fade" id="11"> */ ?>
         <div class="panel ">
                   <div class="panel-heading">
                     <h3 class="panel-title">Headline   <small>posted on 23sep</small></h3>
                   </div>
-            
+            <?php /*images
                   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                       <!-- Indicators -->
                       <ol class="carousel-indicators">
@@ -98,33 +99,38 @@
                     <span class="glyphicon glyphicon-chevron-right"></span>
                   </a>
                 </div><!--close of carousel-example-generic-->
-            
+            *///close of images ?>
                 <!--Panel -->
                       <div class="panel-body">
-                        This is how we won this match <strong>two times</strong>
-                        <p>thats it</p>
+                        This is how we won this match two times
+                     
                       </div>
-                     <div class="panel-body">
-                        This is how we won this match  <p>thats it</p>
+                    <div class="panel-body">
+                        This is how we won this match two times
+                     
                       </div>
-                      <div class="panel-body">
-                        This is how we won this match  <p>thats it</p>
-                      </div>
-        </div><!--close of panel-->
-        </div>
-        </div>
+      </div><!--close of panel-->
+       <?php /*   </div>
+        </div> */ ?>
     </div>
 
     <div class="col-lg-3">
     
          <ul class="  list-group ">
          
+         <?php
+$feed="cricket_news";
+$result=find_all_data($feed);
+while($subject = mysqli_fetch_assoc($result)){
+
+	?>
         
-                         <li class=" list-group-item active"><a href="#10" data-toggle="tab">
-          <h4 class="list-group-item-text " > India Vs England </h4>
-          <p class="list-group-item-text">#EngvInd, 4th ODI: Root, Morgan doing a solid rebuilding job. ENG 95/3 (27ov) Root 33*, Morgan 32*. Stand: 72*. Live: http://read.ht/i4S  </p> 
+                         <li class=" list-group-item ">
+          <h4 class="list-group-item-text " ><?php echo $subject['heading'];?></h4>
+         <a href="#10" data-toggle="tab"> <p class="list-group-item-text"><?php echo $subject['content']; ?></p> 
          </a></li>
-          
+            <?php } ?>
+            <!--
                     <li class=" list-group-item"><a href="#11" data-toggle="tab">
           <h4 class="list-group-item-text"> India Vs England </h4>
           <p class="list-group-item-text">#EngvInd, 4th ODI: Root, Morgan doing a solid rebuilding job. ENG 95/3 (27ov) Root 33*, Morgan 32*. Stand: 72*. Live: http://read.ht/i4S  </p> 
@@ -137,7 +143,7 @@
           <h4 class="list-group-item-text"> India Vs England </h4>
           <p class="list-group-item-text">#EngvInd, 4th ODI: Root, Morgan doing a solid rebuilding job. ENG 95/3 (27ov) Root 33*, Morgan 32*. Stand: 72*. Live: http://read.ht/i4S  </p> 
      
-             </a></li>
+             </a></li>-->
              </ul>
      
     </div>

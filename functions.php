@@ -34,18 +34,22 @@
 		}
 		return $output;
 	}
-	
+	//new function
 	function find_all_data($table_name) {
 		global $connection;
 		
 		$query  = "SELECT * ";
 		$query .= "FROM ".$table_name ;
-		
+		/*if ($public) {
+			$query .= "WHERE visible = 1 ";
+		} 
+		$query .= "ORDER BY position ASC";
+		*/
 		$subject_set = mysqli_query($connection, $query);
 		confirm_query($subject_set);
-		return $subject_set;
-	}
 	
+		return $subject_set;
+      }
 	function find_all_subjects($public=true) {
 		global $connection;
 		
