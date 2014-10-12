@@ -35,12 +35,31 @@
 		return $output;
 	}
 	
+	function empty_date($var)
+	{
+		if (empty($var) or $var === '0000-00-00' or $var === '0000-00-00 00:00:00')
+			return true;
+		else
+			return false;
+	}
 	function find_all_data($table_name) {
 		global $connection;
 		
 		$query  = "SELECT * ";
 		$query .= "FROM ".$table_name ;
 		
+		$subject_set = mysqli_query($connection, $query);
+		confirm_query($subject_set);
+		return $subject_set;
+	}
+	
+	function find_all_data_desc($table_name,$primary_id) {
+		global $connection;
+		
+		$query  = "SELECT * ";
+		$query .= "FROM ".$table_name ;
+		$query .= " ORDER BY ".$primary_id." DESC ";
+		  $query .= "LIMIT 5";
 		$subject_set = mysqli_query($connection, $query);
 		confirm_query($subject_set);
 		return $subject_set;
@@ -58,6 +77,38 @@
 		$subject_set = mysqli_query($connection, $query);
 		confirm_query($subject_set);
 		return $subject_set;
+	}
+	
+	function find_pages_for_cricket_news($subject_id) {
+		global $connection;
+		
+		$safe_subject_id = mysqli_real_escape_string($connection, $subject_id);
+		
+		$query  = "SELECT * ";
+		$query .= "FROM cricket_news_page ";
+		$query .= "WHERE cnpid = {$safe_subject_id} ";
+		$page_set = mysqli_query($connection, $query);
+		confirm_query($page_set);
+		return $page_set;
+	}
+	
+	function find_cricket_news_by_id($subject_id) {
+		global $connection;
+		
+		$safe_subject_id = mysqli_real_escape_string($connection, $subject_id);
+		
+		$query  = "SELECT * ";
+		$query .= "FROM cricket_news ";
+		$query .= "WHERE id = {$safe_subject_id} ";
+        $query .= "LIMIT 1";
+		$subject_set = mysqli_query($connection, $query);
+		confirm_query($subject_set);
+		if($subject = mysqli_fetch_assoc($subject_set)) {
+			return $subject;
+		} else {
+			return null;
+		}
+		
 	}
 	
 	function find_pages_for_subject($subject_id, $public=true) {
@@ -194,114 +245,40 @@
 			$current_page = null;
 		}
 	}
-
-	// navigation takes 2 arguments
-	// - the current subject array or null
-	// - the current page array or null
-	function navigation($subject_array, $page_array) {
-		$output = "<ul class=\"subjects\">";
-		$subject_set = find_all_subjects(false);
-		while($subject = mysqli_fetch_assoc($subject_set)) {
-			$output .= "<li";
-			if ($subject_array && $subject["id"] == $subject_array["id"]) {
-				$output .= " class=\"selected\"";
-			}
-			$output .= ">";
-			$output .= "<a href=\"manage_content.php?subject=";
-			$output .= urlencode($subject["id"]);
-			$output .= "\">";
-			$output .= htmlentities($subject["menu_name"]);
-			$output .= "</a>";
+function find_student_profile_by_username($username) {
+		global $connection;
+		$safe_username = mysqli_real_escape_string($connection, $username);
+		$query  = "SELECT * ";
+		$query .= "FROM student ";
+		$query .= "WHERE username = '{$safe_username}' ";
+		$query .= "LIMIT 1";
+		$user_set = mysqli_query($connection, $query);
+		confirm_query($user_set);
+		if($user = mysqli_fetch_assoc($user_set)) {
 			
-			$page_set = find_pages_for_subject($subject["id"], false);
-			$output .= "<ul class=\"pages\">";
-			while($page = mysqli_fetch_assoc($page_set)) {
-				$output .= "<li";
-				if ($page_array && $page["id"] == $page_array["id"]) {
-					$output .= " class=\"selected\"";
-				}
-				$output .= ">";
-				$output .= "<a href=\"manage_content.php?page=";
-				$output .= urlencode($page["id"]);
-				$output .= "\">";
-				$output .= htmlentities($page["menu_name"]);
-				$output .= "</a></li>";
-			}
-			mysqli_free_result($page_set);
-			$output .= "</ul></li>";
+			return $user;
+		} else {
+			return null;
 		}
-		mysqli_free_result($subject_set);
-		$output .= "</ul>";
-		return $output;
-	}
-
-	function public_navigation($subject_array, $page_array) {
-		$output = "<ul class=\"subjects\">";
-		$subject_set = find_all_subjects();
-		while($subject = mysqli_fetch_assoc($subject_set)) {
-			$output .= "<li";
-			if ($subject_array && $subject["id"] == $subject_array["id"]) {
-				$output .= " class=\"selected\"";
-			}
-			$output .= ">";
-			$output .= "<a href=\"index.php?subject=";
-			$output .= urlencode($subject["id"]);
-			$output .= "\">";
-			$output .= htmlentities($subject["menu_name"]);
-			$output .= "</a>";
-			
-			if ($subject_array["id"] == $subject["id"] || 
-					$page_array["subject_id"] == $subject["id"]) {
-				$page_set = find_pages_for_subject($subject["id"]);
-				$output .= "<ul class=\"pages\">";
-				while($page = mysqli_fetch_assoc($page_set)) {
-					$output .= "<li";
-					if ($page_array && $page["id"] == $page_array["id"]) {
-						$output .= " class=\"selected\"";
-					}
-					$output .= ">";
-					$output .= "<a href=\"index.php?page=";
-					$output .= urlencode($page["id"]);
-					$output .= "\">";
-					$output .= htmlentities($page["menu_name"]);
-					$output .= "</a></li>";
-				}
-				$output .= "</ul>";
-				mysqli_free_result($page_set);
-			}
-
-			$output .= "</li>"; // end of the subject li
-		}
-		mysqli_free_result($subject_set);
-		$output .= "</ul>";
-		return $output;
-	}
-
-	function password_encrypt($password) {
-  	$hash_format = "$2y$10$";   // Tells PHP to use Blowfish with a "cost" of 10
-	  $salt_length = 22; 					// Blowfish salts should be 22-characters or more
-	  $salt = generate_salt($salt_length);
-	  $format_and_salt = $hash_format . $salt;
-	  $hash = crypt($password, $format_and_salt);
-		return $hash;
 	}
 	
-	function generate_salt($length) {
-	  // Not 100% unique, not 100% random, but good enough for a salt
-	  // MD5 returns 32 characters
-	  $unique_random_string = md5(uniqid(mt_rand(), true));
-	  
-		// Valid characters for a salt are [a-zA-Z0-9./]
-	  $base64_string = base64_encode($unique_random_string);
-	  
-		// But not '+' which is valid in base64 encoding
-	  $modified_base64_string = str_replace('+', '.', $base64_string);
-	  
-		// Truncate string to the correct length
-	  $salt = substr($modified_base64_string, 0, $length);
-	  
-		return $salt;
+function find_user_by_username($username) {
+		global $connection;
+		$safe_username = mysqli_real_escape_string($connection, $username);
+		$query  = "SELECT * ";
+		$query .= "FROM login ";
+		$query .= "WHERE username = '{$safe_username}' ";
+		$query .= "LIMIT 1";
+		$user_set = mysqli_query($connection, $query);
+		confirm_query($user_set);
+		if($user = mysqli_fetch_assoc($user_set)) {
+			
+			return $user;
+		} else {
+			return null;
+		}
 	}
+	
 	
 	function password_check($password, $existing_hash) {
 		// existing hash contains format and salt at start
@@ -313,13 +290,14 @@
 	  }
 	}
 
+	
 	function attempt_login($username, $password) {
-		$admin = find_admin_by_username($username);
-		if ($admin) {
+		$user = find_user_by_username($username);
+		if ($user) {
 			// found admin, now check password
-			if (password_check($password, $admin["hashed_password"])) {
+			if (password_check($password, $user["password"])) {
 				// password matches
-				return $admin;
+				return $user;
 			} else {
 				// password does not match
 				return false;
@@ -331,12 +309,12 @@
 	}
 
 	function logged_in() {
-		return isset($_SESSION['admin_id']);
+		return isset($_SESSION['username']);
 	}
 	
 	function confirm_logged_in() {
 		if (!logged_in()) {
-			redirect_to("login.php");
+			redirect_to("home.php");
 		}
 	}
 

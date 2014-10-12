@@ -1,7 +1,20 @@
+<?php require_once("includes/session.php"); ?>
+<?php require_once("includes/db_connection.php"); ?>
+<?php require_once("includes/functions.php"); ?>
+
+ <span class="text-danger">
+	<?php echo message();?>
+    <?php $errors = errors(); ?>
+    <?php echo form_errors($errors); ?>
+ </span>
+        	
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="img/Spirit_medal_2.png" />
+
 <title>SpHub'</title>
 <link rel="shortcut icon" href="../img/award.png" />
 <link  href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -132,7 +145,7 @@ section h3.section-subheading {
 
             <div class="modal-body">
                 <!-- The form is placed inside the body of modal -->
-                <form id="loginForm" method="post" class="form-horizontal">
+                <form id="loginForm" method="post" class="form-horizontal" action="login.php">
                     <div class="form-group">
                         <label class="col-md-3 control-label">Username</label>
                         <div class="col-md-5">
@@ -148,9 +161,10 @@ section h3.section-subheading {
                     <div class=" modal-footer">
                         <div class="col-md-3">
                         <a class="btn"  data-toggle="modal" data-target="#signUpModal">Not yet Register</a>
+                  
                     </div>
                         <div class="col-md-5 col-md-offset-3">
-                        <button type="submit" class="btn btn-default">Login</button>
+                        <button type="submit" class="btn btn-default" value="Submit" name="submit">Login</button>
                         </div>
                     </div>
                 </form>
@@ -183,7 +197,7 @@ section h3.section-subheading {
               
               <div class="form-group">
                 <label for="Email1" class=" control-label">Email address</label>
-                <input type="email" class="form-control" id="Email1" name="email" required="required" placeholder="Enter email">
+                <input type="email" class="form-control" id="Email1" name="email" required placeholder="Enter email">
               </div>
               
 
@@ -192,7 +206,7 @@ section h3.section-subheading {
                   <div class="input-group">
                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock" data-toggle="tooltip" data-placement="top" title="Password must be of six characters"></span></span>
                      
-                      <input type="password" class="form-control" id="Password1" placeholder="Password" required="required" name="password">
+                      <input type="password" class="form-control" id="Password1" placeholder="Password" required name="password">
                   </div>
                </div>
                 
@@ -227,8 +241,8 @@ section h3.section-subheading {
             </div>
             </div>
                  <div class="form-group">
-                   <label for="sex" class="control-label">Sex</label>
-                      <select class="form-control" name="sex"  id="sex" >
+                   <label for="sex" class="control-label">Gender</label>
+                      <select class="form-control" name="gender"  id="sex" >
                       <option>Male</option>
                       <option>FEMALE</option>
                       </select>

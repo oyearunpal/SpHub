@@ -14,7 +14,7 @@
 
 <div class=" collapse navbar-collapse navHeaderCollapse ">
  <ul class="nav nav-pills navbar-nav navbar-right">
-<a href="#" class="navbar-brand ">Name of User</a>
+<a href="#" class="navbar-brand "><?php echo $_SESSION["username"] ; ?></a>
 <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
  <span class="icon-bar"></span>
  <span class="icon-bar"></span>
@@ -24,9 +24,9 @@
 <li class="dropdown text-success ">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
    <ul class="dropdown-menu">
-       <li><a href="#">Profile<span class="badge pull-right">4</span></a></li>
+       <li><a href="profile.php">Profile<span class="badge pull-right">4</span></a></li>
         <li><a href="#" class="text-success">Setting</a></li>
-         <li><a href="#">LogOut</a></li>
+         <li><a href="logout.php">LogOut</a></li>
          </ul></li>
 
 </div>
@@ -48,18 +48,38 @@
  <span class="icon-bar"></span>
  <span class="icon-bar"></span>
  </button>
- <li class="active"> <a href="#">Home <span class="badge "><span class="glyphicon glyphicon-home"></span></span></a></li></li>
+ <li class="
+  <?php
+	if($menuid == 1)
+	echo " active"; ?>
+   "> <a href="index.php">Home <span class="badge "><span class="glyphicon glyphicon-home"></span></span></a></li></li>
  
- <li class="dropdown">
+ <li class="dropdown
+  <?php
+	if($menuid == 2)
+	echo " active"; ?>
+   ">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sport<b class="caret"></b></a>
    <ul class="dropdown-menu">
        <li><a href="cricket_home.php">Cricket<span class="badge pull-right">4</span></a></li>
         <li><a href="#">Chess</a></li>
          <li><a href="#">Football</a></li>
          </ul></li>
-<li><a href="#">HubStarPlayer</a></li>
-<li><a href="#">Developer</a></li>
- <li><a href="#contact" data-toggle="modal" >Feedback</a></li>
+<li class="
+  <?php
+	if($menuid == 3)
+	echo " active"; ?>
+   "><a href="#">HubStarPlayer</a></li>
+<li class="
+  <?php
+	if($menuid == 4)
+	echo " active"; ?>
+   "><a href="#">Developer</a></li>
+ <li class="
+  <?php
+	if($menuid == 5)
+	echo " active"; ?>
+   "><a href="#contact" data-toggle="modal" >Feedback</a></li>
   <li><a href="#">About</a></li>
  </ul>
  </div>
@@ -80,13 +100,13 @@
       <div class="modal-body">
         
         <p>Write here&hellip;</p>
-        <textarea rows="8" class="form-control" name="feedback"></textarea>
+        <textarea rows="8" class="form-control" name="feedback_content"></textarea>
       </div>
       
          
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary"  >Send</button>
+        <button type="submit" class="btn btn-primary" name="feedback" value="Feedback" >Send</button>
         
       </div>
       </form>

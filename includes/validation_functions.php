@@ -31,7 +31,9 @@ function validate_presences($required_fields) {
 function has_max_length($value, $max) {
 	return strlen($value) <= $max;
 }
-
+function has_min_length($value, $min) {
+	return strlen($value) >= $min;
+}
 function validate_max_lengths($fields_with_max_lengths) {
 	global $errors;
 	// Expects an assoc. array
@@ -39,6 +41,16 @@ function validate_max_lengths($fields_with_max_lengths) {
 		$value = trim($_POST[$field]);
 	  if (!has_max_length($value, $max)) {
 	    $errors[$field] = fieldname_as_text($field) . " is too long";
+	  }
+	}
+}
+function validate_min_lengths($fields_with_min_lengths) {
+	global $errors;
+	// Expects an assoc. array
+	foreach($fields_with_min_lengths as $field => $min) {
+		$value = trim($_POST[$field]);
+	  if (!has_min_length($value, $min)) {
+	    $errors[$field] = fieldname_as_text($field) . " is too small";
 	  }
 	}
 }
