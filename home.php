@@ -21,6 +21,7 @@
 <link href="custom/css/style.css" rel="stylesheet" type="text/css" />
 <!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
 <style>
+
 header {
 	text-align: center;
 	color:#BFAEF5;
@@ -59,11 +60,11 @@ header .intro-text .intro-heading {
 @media(min-width:768px) {
     header .intro-text {
 	padding-top: 50px;
-	padding-bottom: 200px;
+	padding-bottom: 300px;
     }
 
     header .intro-text .intro-lead-in {
-	margin-bottom: 200px;
+	margin-bottom: 180px;
 	font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 40px;
 	font-style: italic;
@@ -71,7 +72,7 @@ header .intro-text .intro-heading {
     }
 
     header .intro-text .intro-heading {
-	margin-bottom: 250px;
+	margin-bottom: 180px;
 	text-transform: uppercase;
 	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 75px;
@@ -110,6 +111,25 @@ section h3.section-subheading {
     color: #fed136;
 }
 
+.team-member {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.team-member img {
+    margin: 0 auto;
+    border: 7px solid #fff;
+}
+
+.team-member h4 {
+    margin-top: 25px;
+    margin-bottom: 0;
+    text-transform: none;
+}
+
+.team-member p {
+    margin-top: 0;
+}
 
 
 </style>
@@ -122,7 +142,7 @@ section h3.section-subheading {
  <ul class="nav navbar-nav navbar-right">
   
    
-	<li><a href="#">Developer</a></li>
+	<li><a href="#developer">Developer</a></li>
  
   <li><a href="#">About</a></li>
  </ul>
@@ -297,7 +317,7 @@ section h3.section-subheading {
 
 </body>
 </html>
-
+<?php include("includes/layouts/footer.php"); ?>
   
 
 

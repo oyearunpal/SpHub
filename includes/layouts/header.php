@@ -8,82 +8,66 @@
 <link href="custom/css/style.css" rel="stylesheet" type="text/css" />
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-<body>
-
-<header class=" navbar  navbar-default navbar-fixed-top navbar-collapse " style="margin-bottom:100px;">
-
-<div class=" collapse navbar-collapse navHeaderCollapse ">
- <ul class="nav nav-pills navbar-nav navbar-right">
-<a href="#" class="navbar-brand "><?php echo $_SESSION["username"] ; ?></a>
-<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
- <span class="icon-bar"></span>
- <span class="icon-bar"></span>
- <span class="icon-bar"></span>
-</button>
- 
-<li class="dropdown text-success ">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
-   <ul class="dropdown-menu">
-       <li><a href="profile.php">Profile<span class="badge pull-right">4</span></a></li>
-        <li><a href="#" class="text-success">Setting</a></li>
-         <li><a href="logout.php">LogOut</a></li>
-         </ul></li>
-
-</div>
+<body id="page-top" class="index" style="margin-top:80px;">
 
 
-</header>
-
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top"  >
+        <div class="container">
+<!--
 
 <div class="navbar navbar-inverse navbar-static-top navbar-collapse" style="margin-top:50px">
- <div  class="container">
-  
-   <a href="#" class="navbar-brand">SPHub!</a>
+ <div  class="container"> -->
+   <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+            <a class="navbar-brand page-scroll" href="#"><img src="img/logo.png" alt="SPHub!" width="132" height="51" class="img-responsive"/></a> </div>
+             <div class=" collapse navbar-collapse navHeaderCollapse" id="navbar-collapse-1">
+                 <ul class="nav navbar-nav">
+                     
+                     <li class=" <?php if($menuid == 1) echo " active"; ?>"> 
+                     <a href="index.php" class="page-scroll">Home <span class="badge "><span class="glyphicon glyphicon-home"></span></span></a>
+                     </li>
+                     
+                     <li class="dropdown<?php if($menuid == 2) echo " active"; ?> ">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sport<b class="caret"></b></a>
+                           <ul class="dropdown-menu">
+                               <li><a href="cricket_home.php">Cricket<span class="badge pull-right">4</span></a></li>
+                               <li><a href="#">Chess</a></li>
+                               <li><a href="#">Football</a></li>
+                           </ul>
+                     </li>
+                    <li class="<?php if($menuid == 3) echo " active"; ?> "><a href="#" class="page-scroll">HubStarPlayer</a></li>
+                    
+                    <li class="<?php if($menuid == 4) echo " active"; ?>"><a href="#developer" class="page-scroll">Developer</a></li>
+                    
+                     <li class=" <?php if($menuid == 5) echo " active"; ?>"><a href="#contact" data-toggle="modal" >Feedback</a></li>
+                      <li><a href="#">About</a></li>
+                      
+                     </ul>
+                     
+                     <ul class="nav navbar-nav navbar-right">
+                         <li><a href="#" class="navbar-brand btn  "><span class="warning"><?php echo $_SESSION["username"] ; ?></span></a></li>
+                         <li class="dropdown text-success ">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
+                            <ul class="dropdown-menu">
+                               <li><a href="edit_profile.php" >Profile<span class="badge pull-right">4</span></a></li>
+                               <li><a href="#" class="text-success">Setting</a></li>
+                               <li><a href="logout.php">LogOut</a></li>
+                             </ul>
+                            </li>
+                     </ul>
+             </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
-
- <div class=" collapse navbar-collapse navHeaderCollapse">
- <ul class="nav navbar-nav navbar-right">
-  <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
- <span class="icon-bar"></span>
- <span class="icon-bar"></span>
- <span class="icon-bar"></span>
- </button>
- <li class="
-  <?php
-	if($menuid == 1)
-	echo " active"; ?>
-   "> <a href="index.php">Home <span class="badge "><span class="glyphicon glyphicon-home"></span></span></a></li></li>
- 
- <li class="dropdown
-  <?php
-	if($menuid == 2)
-	echo " active"; ?>
-   ">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sport<b class="caret"></b></a>
-   <ul class="dropdown-menu">
-       <li><a href="cricket_home.php">Cricket<span class="badge pull-right">4</span></a></li>
-        <li><a href="#">Chess</a></li>
-         <li><a href="#">Football</a></li>
-         </ul></li>
-<li class="
-  <?php
-	if($menuid == 3)
-	echo " active"; ?>
-   "><a href="#">HubStarPlayer</a></li>
-<li class="
-  <?php
-	if($menuid == 4)
-	echo " active"; ?>
-   "><a href="#">Developer</a></li>
- <li class="
-  <?php
-	if($menuid == 5)
-	echo " active"; ?>
-   "><a href="#contact" data-toggle="modal" >Feedback</a></li>
-  <li><a href="#">About</a></li>
- </ul>
- </div>
- </div></div><!-- navigation bar close -->
  
 <!--Feedback form -->
 <div class="modal fade" id="contact">
@@ -113,27 +97,3 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal --> 
-  
-
-
-<!--Footer is here-->
-<footer class="navbar navbar-default navbar-fixed-bottom " >
-  <div class="container">
-   <p class="navbar-text pull-left" style="height:inherit">ADBMS Project</p>
-   <div class="navbar-text pull-right">
-   <a href="#"><i class="fa fa-twitter fa-2x" style="color: #4099FF"></i></a>
-   <a href="#" ><i class="fa fa-google-plus fa-2x "></i></a>
-   <a href="#"><i class="fa fa-facebook fa-2x" style="color:#3b5998"></i></a>
-    <a href="#"><i class="icon-thumbs-up icon-3x main-color"></i></a>
-   </div>
-   
-  
-   </div>
-  </footer>
-  
-  
-<script  src="../custom/js/jquery-1.11.1.min.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js" ></script>
-
-</body>
-</html>

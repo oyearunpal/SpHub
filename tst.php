@@ -1,5 +1,12 @@
-<div ><br><br><br><br><br><br><br><br></div> 
-<section id="developer" class="bg-light-gray well">
+<?php require_once("includes/session.php"); ?>
+<?php require_once("includes/db_connection.php"); ?>
+<?php require_once("includes/functions.php"); ?>
+<?php confirm_logged_in(); ?>
+<?php $menuid = 1; ?>
+<link rel="shortcut icon" href="img/Spirit_medal_2.png" />
+<?php include("includes/layouts/header.php"); ?>
+
+<section id="team" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -11,36 +18,36 @@
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4 class="text-centre">Arun Pal</h4>
+                        <h4>Kay Garland</h4>
                         <p class="text-muted">Lead Designer</p>
    <a href="#"><i class="fa fa-twitter fa-2x" ></i></a>
    <a href="#" ><i class="fa fa-google-plus fa-2x "></i></a>
    <a href="#"><i class="fa fa-facebook fa-2x" ></i></a>
-    
+    <a href="#">
 
                         </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/2.jpg" class="img-responsive img-circle" alt="">
-                        <ul class="list-inline"><h4>Jignesh Patel</h4>
+                        <h4>Larry Parker</h4>
                         <p class="text-muted">Lead Marketer</p>
                         <a href="#"><i class="fa fa-twitter fa-2x" ></i></a>
    <a href="#" ><i class="fa fa-google-plus fa-2x "></i></a>
    <a href="#"><i class="fa fa-facebook fa-2x" ></i></a>
-
+    <a href="#">
 
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="img/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Shubham Shawant</h4>
+                        <h4>Diana Pertersen</h4>
                         <p class="text-muted">Lead Developer</p>
                         <a href="#"><i class="fa fa-twitter fa-2x" ></i></a>
    <a href="#" ><i class="fa fa-google-plus fa-2x "></i></a>
    <a href="#"><i class="fa fa-facebook fa-2x" ></i></a>
-   
+    <a href="#">
 
                     </div>
                 </div>
@@ -52,39 +59,4 @@
             </div>
         </div>
     </section> 
-
-<footer class="navbar navbar-default navbar-fixed-bottom " >
-  <div class="container">
-   <p class="navbar-text pull-left" style="height:inherit">ADBMS Project,Copyright <?php echo date("Y"); ?></p>
-   <div class="navbar-text pull-right">
-   <a href="#"><i class="fa fa-twitter fa-2x" ></i></a>
-   <a href="#" ><i class="fa fa-google-plus fa-2x "></i></a>
-   <a href="#"><i class="fa fa-facebook fa-2x" ></i></a>
-    <a href="#"><i class="icon-thumbs-up icon-3x main-color"></i></a>
-   </div>
-   
-  
-   </div>
-  </footer>
-  
-  
-<script  src="custom/js/jquery-1.11.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js" ></script>
- <script src="custom/js/cbpAnimatedHeader.js"></script>
-
-<!-- Scrolling Nav JavaScript -->
-    <script src="custom/js/jquery.easing.min.js"></script>
-    <script src="custom/js/scrolling-nav.js"></script>
-
-
-</body>
-</html>
-
-<?php
-  // 5. Close database connection
-	if (isset($connection)) {
-	  mysqli_close($connection);
-	}
-?>
-
-
+<?php include("includes/layouts/footer.php"); ?>

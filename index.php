@@ -2,6 +2,7 @@
 <?php require_once("includes/db_connection.php"); ?>
 <?php require_once("includes/functions.php"); ?>
 <?php confirm_logged_in(); ?>
+<?php echo message();?>
 <?php $menuid = 1; ?>
 <link rel="shortcut icon" href="img/Spirit_medal_2.png" />
 <?php include("includes/layouts/header.php"); ?>

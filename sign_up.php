@@ -16,6 +16,7 @@ if (isset($_POST['submit'])) {
 	validate_max_lengths($fields_with_max_lengths);
 	$fields_with_min_lengths = array("password" => 4);
 	validate_min_lengths($fields_with_min_lengths);
+	
     $hash = password_hash($password, PASSWORD_BCRYPT);
 	
 	$email_id =  mysql_prep($_POST["email"]);
